@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clicker Game</title>
+    <style>
+        body { text-align: center; padding: 50px; background: linear-gradient(to bottom, #000033, #003399); }
+        #game-face { width: 400px; position: relative; }
+        .pimple { position: absolute; width: 30px; height: 30px; background-color: red; border-radius: 50%; cursor: pointer; }
+        .pimple.clicked { background-color: green; } /* Цвет изменится при нажатии */
+    </style>
+</head>
+<body>
+    <h1>Click on the Pimples!</h1>
+    <p>Your score: <span id="score">0</span></p>
+    <div id="game-container">
+        <img id="game-face" src="face.webp" alt="Face">
+        <!-- Прыщи будут появляться на изображении -->
+    </div>
+    <script>
+        // Telegram WebApp API
+        window.Telegram.WebApp.ready();
+
+        let score = 0;
+        const scoreDisplay = document.getElementById('score');
+        const face = document.getElementById('game-face');
+
+        function createPimple() {
+            const pimple = document.createElement('div');
+            pimple.classList.add('pimple');
+            // Генерация случайных позиций для прыщей
+            const faceRect = face.getBoundingClientRect();
+            pimple.style.top = `${Math.random() * (faceRect.height - 30)}px`;
+            pimple.style.left = `${Math.random() * (faceRect.width - 30)}px`;
+
+            // Событие клика по прыщу
+            pimple.addEventListener('click', function() {
+                score++;
+                scoreDisplay.textContent = score;
+                pimple.classList.add('clicked');
+                setTimeout(() => {
+                    pimple.remove(); // Удаление прыща после клика
+                }, 300);
+            });
+
+            document.getElementById('game-container').appendChild(pimple);
+        }
+
+        // Создавать прыщ каждые 0.5 секунд
+        setInterval(createPimple, 500);
+    </script>
+</body>
+</html>
