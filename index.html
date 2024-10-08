@@ -29,19 +29,19 @@
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;h1&gt;Click on the Pimples!&lt;/h1&gt;</p>
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;p&gt;Your score: &lt;span id="score"&gt;0&lt;/span&gt;&lt;/p&gt;</p>
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="game-container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;img id="game-face" src="A_cartoon_caricature_face_in_the_center_of_a_blue-.png" alt="Face"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;img id="game-face" src="face.webp" alt="Face"&gt;</p>
 <p class="p1"><span class="Apple-converted-space">        </span>&lt;!-- Появляющиеся прыщи будут внутри этого контейнера --&gt;</p>
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
 <p class="p1"><span class="Apple-converted-space">        </span>let score = 0;</p>
 <p class="p1"><span class="Apple-converted-space">        </span>const scoreDisplay = document.getElementById('score');</p>
 <p class="p1"><span class="Apple-converted-space">        </span>const face = document.getElementById('game-face');</p>
-<p class="p1"><span class="Apple-converted-space">        </span>const faceRect = face.getBoundingClientRect();</p>
 <p class="p2"><br></p>
 <p class="p1"><span class="Apple-converted-space">        </span>function createPimple() {</p>
 <p class="p1"><span class="Apple-converted-space">            </span>const pimple = document.createElement('div');</p>
 <p class="p1"><span class="Apple-converted-space">            </span>pimple.classList.add('pimple');</p>
 <p class="p1"><span class="Apple-converted-space">            </span>// Генерация случайных позиций для прыщей</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const faceRect = face.getBoundingClientRect();</p>
 <p class="p1"><span class="Apple-converted-space">            </span>pimple.style.top = `${Math.random() * (faceRect.height - 30)}px`;</p>
 <p class="p1"><span class="Apple-converted-space">            </span>pimple.style.left = `${Math.random() * (faceRect.width - 30)}px`;</p>
 <p class="p2"><br></p>
@@ -58,7 +58,7 @@
 <p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('game-container').appendChild(pimple);</p>
 <p class="p1"><span class="Apple-converted-space">        </span>}</p>
 <p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>// Создавать прыщ каждые 0,5 секунд</p>
+<p class="p1"><span class="Apple-converted-space">        </span>// Создавать прыщ каждые 0.5 секунд</p>
 <p class="p1"><span class="Apple-converted-space">        </span>setInterval(createPimple, 500);</p>
 <p class="p1"><span class="Apple-converted-space">    </span>&lt;/script&gt;</p>
 <p class="p1">&lt;/body&gt;</p>
